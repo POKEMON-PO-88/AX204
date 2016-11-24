@@ -6,5 +6,5 @@ font-family:Helvetica;
 cursor:progress;
 flex-shrink:initial;
 writing-mode:sideways-rl;
-animation: steps(sideways-rl);	
+animation:infinite;	
 }

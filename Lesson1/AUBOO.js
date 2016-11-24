@@ -27,3 +27,7 @@ ctx3.clearRect(20,20,120,120);
 ctx3.clearRect(160,20,120,120);
 ctx3.clearRect(20,160,120,120);
 ctx3.clearRect(160,160,120,120);
+
+
+var c4 =document.getElementById("myCanvas4");
+var ctx4 = c4.getContext('2d'); 
