@@ -57,8 +57,8 @@ function create() {
 	}
 
 	function update() {
-	game.pyhsics.arcade.collide(player, platforms);
-	game.pyhsics.arcade.collide(enemy1, platforms);
+	game.physics.arcade.collide(player, platforms);
+	game.physics.arcade.collide(enemy1, platforms);
 
 	player.body.velocity.x = 0;
 
