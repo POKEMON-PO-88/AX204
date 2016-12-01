@@ -78,7 +78,7 @@ function create() {
 	{
 		player.body.velocity.y = -350;
 	}
-
+}
 
 
 
