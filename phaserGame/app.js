@@ -34,7 +34,7 @@ function create() {
 
 	//Generare stars for the player to collect
 	//Start by creating a group called stars
-	stars = game.add.group();
+	stars = game.add.physicsGroup();
 	//Adding physics to the group
 	stars.enableBody = true;
 
@@ -119,7 +119,7 @@ function update() {
 	function collectStar(player,star){
 		star.kill();
 		star = stars.create(Math.floor(Math.random()*750),0,'star');
-		star.body.gravity.y=200;
+		star.body.gravity.y =200;
 		star.body.bounce.y = 0.7 + Math.random() *0.3
 
 		score+=10;
