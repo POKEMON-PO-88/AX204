@@ -83,7 +83,7 @@ function update() {
 	game.physics.arcade.collide(enemy1, platforms);
 	game.physics.arcade.collide(stars, platforms);
 	
-	game.physics.arcade.overlap(player,stars,collectStar,null,this);
+	game.physics.arcade.overlap(player, stars,collectStar,null,this);
 
 	//reset player velocity
 	player.body.velocity.x = 0;
@@ -116,7 +116,7 @@ function update() {
 		enemy1.animations.play('right')
 
 
-	function collectStar(player,star){
+	function collectStar(player, star){
 		star.kill();
 		star = stars.create(Math.floor(Math.random()*750),0,'star');
 		star.body.gravity.y =200;
