@@ -30,6 +30,23 @@ function create() {
 	ledge = platforms.create(-150,250, 'ground');
 	ledge.body.immovable = true;
 
+	//Generare stars for the player to collect
+	//Start by creating a group called stars
+	stars = game.add.group();
+	//Adding physics to the group
+	stars.enableBody = true;
+
+	//here we'll create 12 stars spaced evenly apart
+	for (var i=0; i<12; i++){
+
+		//create a star inside the "stars" group
+		var star = stars.create(i*70, 0,'star');
+		//Add gravity
+		star.body.gravity.y = 500;
+		//This gives each star a random bounce value
+		star.body.bounce.y = 0.7+Math.random()*0.3;
+	}
+
 	// Player
 	player = game.add.sprite(32, 400, 'dude');
 		// animate sprite
@@ -54,31 +71,43 @@ function create() {
 
 	// Set up keyboard events
 	cursors = game.input.keyboard.createCursorKeys();
-	}
+}
 
-	function update() {
+function update() {
+	//Collision between user and platforms
 	game.physics.arcade.collide(player, platforms);
 	game.physics.arcade.collide(enemy1, platforms);
-
+	game.physics.arcade.collide(stars, platforms);
+	
+	//reset player velocity
 	player.body.velocity.x = 0;
 
-
+	//keyboard event
 	if (cursors.left.isDown) {
-	player.body.velocity.x= -150;
-	player.animations.play("left");
+		player.body.velocity.x= -150;
+		player.animations.play("left");
 	}else if (cursors.right.isDown) {
-	player.body.velocity.x= +150;
-	player.animations.play("right");	
+		player.body.velocity.x= 150;
+		player.animations.play("right");
 	}else {
-	player.animations.stop();
-	player.frame = 4;
+		//when player sprite stops
+		player.animations.stop();
+		player.frame = 4;
 	}
 
+	//allow player sprite to jump
 	if(cursors.up.isDown && player.body.touching.down)
 	{
 		player.body.velocity.y = -350;
 	}
+
+	//Make baddie run
+	if (enemy1.x > 759) {
+		enemy1.body.velocity.x = -120;
+	} else if (enemy1.x <405) {
+		enemy1.body.velocity.x = 120;
+	}
+
+
+
 }
-
-
-
